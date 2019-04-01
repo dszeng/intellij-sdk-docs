@@ -8,9 +8,10 @@ title: DialogWrapper
 The
 [DialogWrapper](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java)
 is the base class which is supposed to be used for all modal dialogs (and some non-modal dialogs) shown in *IntelliJ Platform* plugins.
+
 It provides the following features:
 
-*  Button layout (platform-specific order of `OK/Cancel` buttons, Mac OS-specific `Help` button)
+*  Button layout (platform-specific order of `OK/Cancel` buttons, macOS-specific `Help` button)
 
 *  Context help
 
@@ -18,13 +19,13 @@ It provides the following features:
 
 *  Non-modal validation (displaying an error message text when the data entered into the dialog is not valid)
 
-*  Keyboard shortcuts
+*  Keyboard shortcuts:
 
     *  `Esc` for closing the dialog
 
-    *   `Left/Right` for switching between buttons
+    *  `Left/Right` for switching between buttons
 
-    *   `Y/N` for `Yes/No` actions if they exist in the dialog
+    *  `Y/N` for `Yes/No` actions if they exist in the dialog
 
 *  Optional `Do not ask again` checkbox
 
@@ -60,7 +61,8 @@ To customize the buttons displayed in the dialog (replacing the standard `OK/Can
 Both of these methods return an array of Swing Action objects.
 If the button that you're adding closes the dialog, you can use
 [DialogWrapperExitAction](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java),
-as the base class for your action.
+as the base class for your action. 
+Use `action.putValue(DialogWrapper.DEFAULT_ACTION, true)` to set the default button.
 
 To validate the data entered into the dialog, you can override the `doValidate()` method.
 The method will be called automatically by timer.
